@@ -31,13 +31,36 @@ const productDetails = require('../src/productDetails');
 
 describe('6 - Implemente os casos de teste para a função `productDetails`', () => {
   it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
-    fail('Teste vazio!');
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste se productDetails é uma função.
+    expect(typeof productDetails).toBe('function');
+
     // Teste se o retorno da função é um array.
+    // Array.isArray - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+    let verifyArray = Array.isArray(productDetails('Luva', 'Óculos'))
+
+    if (verifyArray === true) {
+      verifyArray = 'array';
+    }
+
+    expect(verifyArray).toBe('array');
+
     // Teste se o array retornado pela função contém dois itens dentro.
+    expect(Object.entries(productDetails('Luva', 'Óculos')).length).toBe(2);
+    
     // Teste se os dois itens dentro do array retornado pela função são objetos.
+    expect(typeof (Object.entries (productDetails('Luva', 'Óculos')))).toBe('object');
+
     // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
+    const newArray = productDetails('Luva', 'Óculos');
+
+    expect(newArray[0].name).toMatch('Luva');
+    expect(newArray[0].details.productId).toMatch('Luva');
+    expect(newArray[1].name).toMatch('Óculos');
+    expect(newArray[1].details.productId).toMatch('Óculos');
+
     // Teste se os dois productIds terminam com 123.
+    expect(newArray[0].details.productId).toMatch(/123/);
+    expect(newArray[0].details.productId).toMatch(/123/);
   });
 });
