@@ -12,19 +12,19 @@
 */
 
 const average = (arr) => {
-  // reduce - https://stackoverflow.com/questions/10359907/how-to-compute-the-sum-and-average-of-elements-in-an-array
   const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
-  let result;
 
-  arr.forEach((element) => {
-    if (element !== Number || arr.length === 0) {
-      result = undefined;
-    } else {
-      result = Math.round(avg);
-    }
-  });
+  if (arr.length === 0) {
+    return undefined;
+  }
 
-  return result;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (typeof arr[i] !== 'number') {
+      return undefined;
+    } 
+  }
+
+  return Math.round(avg);
 };
 
 module.exports = average;
