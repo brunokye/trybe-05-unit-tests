@@ -12,6 +12,7 @@
 */
 
 const average = (arr) => {
+  // reduce - https://stackoverflow.com/questions/10359907/how-to-compute-the-sum-and-average-of-elements-in-an-array
   const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
 
   if (arr.length === 0) {
