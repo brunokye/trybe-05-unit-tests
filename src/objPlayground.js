@@ -34,8 +34,29 @@
   arrayGenerator('entries', { sum: 3, mult: 2, div: 0, sub: -1 }) // [ [ 'sum', 3 ], [ 'mult', 2 ], [ 'div', 0 ], [ 'sub', -1 ] ]
 */
 
-const calculator = (number1, number2) => {};
+const calculator = (number1, number2) => {
+  const newObject = {
+    sum: number1 + number2,
+    mult: number1 * number2,
+    // trunc - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc
+    div: Math.trunc(number1 / number2),
+    sub: number1 - number2,
+  };
 
-const arrayGenerator = (type, object) => {};
+  return newObject;
+};
+
+const arrayGenerator = (type, object) => {
+  // object to array - https://stackoverflow.com/questions/38824349/how-to-convert-an-object-to-an-array-of-key-value-pairs-in-javascript
+  // const newArray = Object.keys(object).map((key) => [(key), object[key]]);
+
+  if (type === 'keys') {
+    return Object.keys(object);
+  } if (type === 'values') {
+    return Object.values(object);
+  }
+
+  return Object.entries(object);
+};
 
 module.exports = { calculator, arrayGenerator };
