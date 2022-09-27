@@ -98,7 +98,24 @@ const createMenu = (menu) => {
     fetchMenu: () => menu,
     consumption: [],
     order: (newOrder) => newObject.consumption.push(newOrder),
-  }; 
+    pay: () => {
+      let sum = 0;
+      const food = Object.entries(menu.food);
+      const drink = Object.entries(menu.drink);
+      const itemsMenu = food.concat(drink);
+      const itemsConsumed = newObject.consumption;
+
+      itemsConsumed.forEach((firstElement) => {
+        itemsMenu.forEach((secondElement) => {
+          if (firstElement === secondElement[0]) {
+            sum += secondElement[1] + (secondElement[1] * 0.1);
+          }
+        });
+      });
+
+      return sum;
+    },
+  };
 
   return newObject;
 };

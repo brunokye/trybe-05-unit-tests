@@ -95,35 +95,46 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     // --------------------------------------------------------------------------------------
 
     // TESTE 6: Verifique se, ao adicionar três pedidos, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos.
-    // ```
     // objetoRetornado.order("coxinha");
     // objetoRetornado.order("agua");
     // objetoRetornado.order("sopa");
     // objetoRetornado.order("sashimi");
     // objetoRetornado.consumption // Retorno: ["coxinha", "agua", "sopa", "sashimi"]
-    // ```
+    returnedObject.consumption = [];
+    returnedObject.order('coxinha');
+    returnedObject.order('agua');
+    returnedObject.order('sopa');
+    returnedObject.order('sashimi');
+    expect(returnedObject.consumption).toEqual(['coxinha', 'agua', 'sopa', 'sashimi']);
 
     // Agora faça o TESTE 7 deste arquivo.
     // --------------------------------------------------------------------------------------
 
     // TESTE 7: Verifique se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`.
-    // ```
     // objetoRetornado.order('coxinha');
     // objetoRetornado.order('agua');
     // objetoRetornado.order('coxinha');
     // objetoRetornado.consumption // Retorno: ['coxinha', 'agua', 'coxinha']
-    // ```
+    returnedObject.consumption = [];
+    returnedObject.order('coxinha');
+    returnedObject.order('agua');
+    returnedObject.order('coxinha');
+    expect(returnedObject.consumption).toEqual(['coxinha', 'agua', 'coxinha']);
 
     // Agora faça o TESTE 8 deste arquivo.
     // --------------------------------------------------------------------------------------
 
     // TESTE 8: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, conforme registrado em `objetoRetornado.consumption`
-    // ```
     // objetoRetornado.order('coxinha');
     // objetoRetornado.order('agua');
     // objetoRetornado.order('coxinha');
     // objetoRetornado.pay() // Retorno: somaDosPreçosDosPedidos
-    // ```
+    returnedObject = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} });
+    returnedObject.consumption = [];
+    returnedObject.order('coxinha');
+    returnedObject.order('agua');
+    returnedObject.order('coxinha');
+    expect(returnedObject.pay()).toBeCloseTo(12.87);
   
     // Agora faça o PASSO 4 no arquivo `src/restaurant.js`.
   });
