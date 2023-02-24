@@ -26,10 +26,24 @@ Entre no diretório
   cd trybe-05-unit-tests/
 ```
 
+Instale as dependências
+
+```bash
+  npm install
+```
+
 Abra o projeto
 
 ```bash
   code .
+```
+
+## Executar os Testes
+
+Use o comando abaixo dentro do diretório do projeto
+
+```bash
+  npm run test
 ```
 
 ## Tecnologias
